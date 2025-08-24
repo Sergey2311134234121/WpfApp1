@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfApp1.View.Marshrut"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        ShowInTaskbar="False"
+        WindowStyle="ToolWindow"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.View"
+        mc:Ignorable="d"
+        Title="Marshrut"  Height="180" Width="280"
+        WindowStartupLocation="Manual"
+        Left="1100" Top="100">
+    <Grid Background="White">
+        <TextBox HorizontalAlignment="Left" Margin="119,19,0,0" TextWrapping="Wrap" Text="{Binding Diam}" VerticalAlignment="Top" Width="120"/>
+        <ComboBox HorizontalAlignment="Left" Margin="119,49,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Shers}" SelectedItem="{Binding Sher, Mode=TwoWay}"/>
+        <ComboBox HorizontalAlignment="Left" Margin="119,81,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Kvals}" SelectedItem="{Binding Kval, Mode=TwoWay}"/>
+        <Button Content="Создать маршрут" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Height="20" Width="120" Command="{Binding command}"/>
+        <Label Content="Диаметр отверстия" HorizontalAlignment="Left" Margin="18,19,0,0" VerticalAlignment="Top" FontSize="9"/>
+        <Label Content="Шероховатость&#x0a;поверхности" HorizontalAlignment="Left" Margin="27,41,0,0" VerticalAlignment="Top" FontSize="9"/>
+        <Label Content="Квалитет точности" HorizontalAlignment="Left" Margin="21,82,0,0" VerticalAlignment="Top" FontSize="9"/>
+        <Button Content="Удалить маршрут" HorizontalAlignment="Left" Margin="135,115,0,0" VerticalAlignment="Top" Width="122" Command="{Binding delmarshrut}"/>
+    </Grid>
+</Window>
+

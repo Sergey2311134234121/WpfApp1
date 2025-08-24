@@ -1,0 +1,47 @@
+﻿<Window x:Class="WpfApp1.View.TreeViewOP"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hx="clr-namespace:WpfApp1.Helpers.ВсякаяХуйня"
+        xmlns:local="clr-namespace:WpfApp1.View"
+        mc:Ignorable="d"
+        Title="TreeViewOP" Height="496" Width="436"
+        WindowStartupLocation="Manual"
+        Left="100" Top="100">
+    <Grid Background="White" Margin="0,0,0,0">
+        <TreeView ItemsSource="{Binding ChtototamsSDetals}" Margin="182,10,10,10"  >
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem">
+                    <EventSetter Event="PreviewMouseDoubleClick" Handler="TreeViewItem_PreviewMouseDoubleClick"/>
+                </Style>
+            </TreeView.ItemContainerStyle>
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type hx:Hole}" ItemsSource="{Binding Operations}">
+                    <TextBlock Text="{Binding Name}" FontWeight="Bold" MouseRightButtonUp="Hole_RightClick"/>
+                    <HierarchicalDataTemplate.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" MouseRightButtonUp="Oper_RightClick"
+                                       Tag="{Binding DataContext, RelativeSource={RelativeSource AncestorType={x:Type TreeViewItem},AncestorLevel=2}}"/>
+                        </DataTemplate>
+                    </HierarchicalDataTemplate.ItemTemplate>
+                </HierarchicalDataTemplate>
+
+                <HierarchicalDataTemplate DataType="{x:Type hx:Perem1}" ItemsSource="{Binding VspmOpers}">
+                    <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                    <HierarchicalDataTemplate.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" 
+                                       Tag="{Binding DataContext, RelativeSource={RelativeSource AncestorType={x:Type TreeViewItem},AncestorLevel=2}}"/>
+                        </DataTemplate>
+                    </HierarchicalDataTemplate.ItemTemplate>
+                </HierarchicalDataTemplate>
+
+            </TreeView.Resources>
+        </TreeView>
+        <Button Content="Добавить отверстие" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="127" Command ="{Binding command}"/>
+        <ComboBox HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" Width="167" ItemsSource="{Binding Mats}" SelectedItem="{Binding SelectedMat, Mode=TwoWay}"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.234,-0.299"/>
+        <Button Content="Параметры партии детали" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.234,-0.299" Command ="{Binding OpenPartDet}"/>
+    </Grid>
+</Window>

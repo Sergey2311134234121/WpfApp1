@@ -1,0 +1,49 @@
+﻿<Window x:Class="WpfApp1.View.Perem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        ShowInTaskbar="False"
+        WindowStyle="ToolWindow"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.View"
+        mc:Ignorable="d"
+        Title="Perem" Width="800"
+        SizeToContent="Height"
+        WindowStartupLocation="Manual"
+        Left="525" Top="100">
+    <Grid Background="White" Margin="0,0,0,0" RenderTransformOrigin="0.46,0.535">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Label Content="Способ установки&#xA;и  крепления детали" Margin="10,59,645,61"/>
+            <ComboBox Height ="20" HorizontalAlignment="Left"  VerticalAlignment="Top" ItemsSource="{Binding SposUst, Mode=TwoWay}" SelectedItem="{Binding SelectedSposUst}" Margin="207,67,0,0" Width="395"/>
+            <TextBox Height ="20" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding Massa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" Margin="207,23,0,0"/>
+            <Label Content="Масса детали, кг" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top"/>
+            <Label Content="Характер выверки" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Width="115"/>
+            <ComboBox Height ="20" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120" ItemsSource="{Binding SelectedSposUst.Text1, Mode=TwoWay}" SelectedItem ="{Binding SelectedHaractViv}" Margin="207,115,0,0"/>
+        </Grid>
+        <StackPanel Grid.Row="1" >
+            <Expander Header="Установка кондуктора">
+                <Grid Background="White" Width="Auto" Height="59" >
+                    <ComboBox HorizontalAlignment="Left" Margin="187,20,0,0" VerticalAlignment="Top" Width="120" Height="20"/>
+                    <Label Content="Способ установки&#xA;кондуктора" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="40"/>
+                    <Label Content="Масса кондуктора" HorizontalAlignment="Center" Margin="0,18,0,0" VerticalAlignment="Top" Height="26"/>
+                    <TextBox HorizontalAlignment="Left" Margin="558,23,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="17"/>
+                </Grid>
+            </Expander>
+            <Expander >
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="23*"/>
+                        <ColumnDefinition Width="110*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Кантовка детали " Margin="17,15,17,16"/>
+                    <ComboBox HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120" Margin="82,0,0,0" Grid.Column="1" />
+                </Grid>
+            </Expander>
+            <TextBox  TextWrapping="Wrap" Text="{Binding VRPerem}" Width="120"/>
+        </StackPanel>
+    </Grid>
+</Window>

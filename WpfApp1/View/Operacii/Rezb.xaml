@@ -1,0 +1,37 @@
+﻿<Window x:Class="WpfApp1.View.Operacii.Rezb"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.View.Operacii"
+        mc:Ignorable="d"
+        Title="Rezb"  Height="340" Width="800"
+        WindowStartupLocation="Manual"
+        Left="525" Top="275">
+    <Grid Background="White" Margin="0,0,0,-6">
+        <ComboBox ItemsSource="{Binding NameditemMatsInstrs, Mode=TwoWay}" SelectedItem="{Binding SelectedMatInstr}" HorizontalAlignment="Left" Margin="138,25,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="656,25,0,0" TextWrapping="Wrap" Text="{Binding Glub, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Материал инструмента" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" FontSize="9"/>
+        <Label Content="Номинальный диаметр" HorizontalAlignment="Left" Margin="272,23,0,0" VerticalAlignment="Top" FontSize="9"/>
+        <Label Content="{Binding ContextForLabel, Mode=OneWay}" HorizontalAlignment="Left" Margin="544,25,0,0" VerticalAlignment="Top" FontSize="9"/>
+        <Label Content="Шаг резьбы" HorizontalAlignment="Left" Margin="296,55,0,0" VerticalAlignment="Top" FontSize="9"/>
+        <DataGrid ItemsSource="{Binding ForDataGrid}" AutoGenerateColumns="False" Margin="0,101,0,74" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Header="четатам" Binding="{Binding UslName}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox SelectedItem="{Binding SelectedUslParams, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding UslParams}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn  Header="Кэффициенты" Binding="{Binding SelectedUslParams.Koef}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox IsReadOnly="True" HorizontalAlignment="Left" Margin="480,0,0,37" TextWrapping="Wrap" Text="{Binding VR, StringFormat={}{0:F2}, Mode=OneWay}" Width="120" Height="22" VerticalAlignment="Bottom"/>
+        <Button Content="Расчет" Command ="{Binding Rasch}" HorizontalAlignment="Left" Margin="220,0,0,37" Width="100" Height="22" VerticalAlignment="Bottom"/>
+        <Label Content="Время операции" HorizontalAlignment="Left" Margin="350,0,0,37" FontSize="9" Height="22" VerticalAlignment="Bottom"/>
+        <ComboBox HorizontalAlignment="Left" Margin="400,23,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding NomDiams}" SelectedItem="{Binding SelectedNomDiam, UpdateSourceTrigger=PropertyChanged}"/>
+        <ComboBox HorizontalAlignment="Left" Margin="400,54,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding StepRezs, Mode=TwoWay}" SelectedItem="{Binding StepRez}"/>
+    </Grid>
+</Window>

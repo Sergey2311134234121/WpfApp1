@@ -1,0 +1,41 @@
+﻿<Window x:Class="WpfApp1.View.Operacii.Razv"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        ShowInTaskbar="False"
+        WindowStyle="ToolWindow"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.View.Operacii"
+        mc:Ignorable="d"
+        Title="Razv" Height="340" Width="800"
+        WindowStartupLocation="Manual"
+        Left="525" Top="275">
+    <Grid Background="White" Margin="0,0,0,0">
+        <ComboBox ItemsSource="{Binding NameditemMatsInstrs, Mode=TwoWay}" SelectedItem="{Binding SelectedMatInstr}" HorizontalAlignment="Left" Margin="138,25,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="397,25,0,0" TextWrapping="Wrap" Text="{Binding Diam, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="656,25,0,0" TextWrapping="Wrap" Text="{Binding Glub, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="397,55,0,0" TextWrapping="Wrap" Text="{Binding Oper.GlubRez, StringFormat={}{0:F2}}" VerticalAlignment="Top" Width="120"/>
+        <ComboBox HorizontalAlignment="Left" Margin="656,55,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Kvals}" SelectedItem="{Binding Kval , Mode=TwoWay}"/>
+        <Label Content="Материал инструмента" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" FontSize="9"/>
+        <Label Content="Диаметр сверления" HorizontalAlignment="Left" Margin="294,25,0,0" VerticalAlignment="Top" FontSize="9"/>
+        <Label Content="{Binding ContextForLabel, Mode=OneWay}" HorizontalAlignment="Left" Margin="544,25,0,0" VerticalAlignment="Top" FontSize="9"/>
+        <Label Content="Глубина резания" HorizontalAlignment="Left" Margin="296,55,0,0" VerticalAlignment="Top" FontSize="9"/>
+        <Label Content="Квалитет" HorizontalAlignment="Left" Margin="555,55,0,0" VerticalAlignment="Top" FontSize="9"/>
+        <DataGrid ItemsSource="{Binding ForDataGrid}" AutoGenerateColumns="False" Margin="0,101,0,74" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Header="четатам" Binding="{Binding UslName}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox SelectedItem="{Binding SelectedUslParams, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding UslParams}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn  Header="Кэффициенты" Binding="{Binding SelectedUslParams.Koef}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox IsReadOnly="True" HorizontalAlignment="Left" Margin="480,0,0,37" TextWrapping="Wrap" Text="{Binding VR, StringFormat={}{0:F2}, Mode=OneWay}" Width="120" Height="22" VerticalAlignment="Bottom"/>
+        <Button Content="Расчет" Command ="{Binding Rasch}" HorizontalAlignment="Left" Margin="220,0,0,37" Width="100" Height="22" VerticalAlignment="Bottom"/>
+        <Label Content="Время операции" HorizontalAlignment="Left" Margin="350,0,0,37" FontSize="9" Height="22" VerticalAlignment="Bottom"/>
+    </Grid>
+</Window>

@@ -1,0 +1,27 @@
+﻿<Window x:Class="WpfApp1.View.OtvParams"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        ShowInTaskbar="False"
+        WindowStyle="ToolWindow"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.View"
+        mc:Ignorable="d"
+        Title="{Binding Hole.Name}" Height="180" Width="587"
+        WindowStartupLocation="Manual"
+        Left="525" Top="100">
+    <Grid  Background="White" Margin="0,0,0,0">
+        <ComboBox HorizontalAlignment="Left" Margin="419,18,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Tips}" SelectedItem="{Binding Tip, Mode=TwoWay}"/>
+        <TextBox HorizontalAlignment="Left" Margin="139,20,0,0" TextWrapping="Wrap" Text="{Binding KolvoOtv, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Расчет по автомаршруту" HorizontalAlignment="Left" Margin="198,116,0,0" Command="{Binding OpenMarsh}" Width="142" Height="20" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="419,50,0,0" TextWrapping="Wrap" Text="{Binding VrEd, Mode=OneWay, StringFormat={}{0:F2}}" Width="120" IsReadOnly="True" Height="18" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="419,82,0,0" TextWrapping="Wrap" Text="{Binding VrVsego, Mode=OneWay, StringFormat={}{0:F2}}" Width="120" IsReadOnly="True" Height="18" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="139,50,0,0" TextWrapping="Wrap" Text="{Binding Hole.GlubObsh, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" Width="120" Height="18" VerticalAlignment="Top"/>
+        <Label Content="Кол-во отверстий&#x0a;    данного типа" HorizontalAlignment="Left" Margin="5,12,0,0" FontSize="9" Height="34" VerticalAlignment="Top"/>
+        <Label Content="         Единичное время&#x0a;(заполняется автоматически)" HorizontalAlignment="Left" Margin="275,42,0,0" FontSize="9" Height="34" VerticalAlignment="Top"/>
+        <Label Content="           Общее время&#x0a;(заполняется автоматически)" HorizontalAlignment="Left" Margin="275,72,0,0" FontSize="9" RenderTransformOrigin="0.5,0.5" Height="34" VerticalAlignment="Top"/>
+        <Label Content="{Binding ContextForLabel, Mode=OneWay}" HorizontalAlignment="Left" Margin="20,41,0,0" FontSize="9" Height="58" VerticalAlignment="Top"/>
+        <Label Content="Тип отверстия" HorizontalAlignment="Left" Margin="306,18,0,0" FontSize="9" Height="22" VerticalAlignment="Top"/>
+        <Button Content="?" HorizontalAlignment="Left" Margin="523,116,0,0" VerticalAlignment="Top" Height="20" Width="16"/>
+    </Grid>
+</Window>
